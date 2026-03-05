@@ -8,3 +8,8 @@ Thumbs.db
 *~
 .vscode/
 .idea/
+
+# npm (used for local tooling only)
+node_modules/
+package.json
+package-lock.json
