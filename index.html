@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="RAapp">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <title>RAapp</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>RAapp</h1>
+    <nav class="date-nav">
+      <button id="prev-day" aria-label="Previous day">&larr;</button>
+      <span id="current-date"></span>
+      <button id="next-day" aria-label="Next day">&rarr;</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="legend">
+      <div class="legend-row">
+        <span class="legend-label swollen-label">S = Swollen</span>
+        <span class="legend-label painful-label">P = Painful</span>
+      </div>
+      <div class="legend-row">
+        <span class="legend-sev">? Unknown</span>
+        <span class="legend-sev">0 None</span>
+        <span class="legend-sev">1 Slight</span>
+        <span class="legend-sev">2 Moderate</span>
+        <span class="legend-sev">3 Severe</span>
+      </div>
+    </div>
+
+    <div id="joints-container"></div>
+
+    <section class="text-section">
+      <h2>Medications</h2>
+      <textarea id="medications" placeholder="e.g. Methotrexate 10mg at 8am, Prednisone 5mg at noon"></textarea>
+    </section>
+
+    <section class="text-section">
+      <h2>Notes</h2>
+      <textarea id="notes" placeholder="How are you feeling today?"></textarea>
+    </section>
+
+    <button id="save-btn" class="save-btn">Save</button>
+    <div id="save-status" class="save-status"></div>
+
+    <div class="export-import-row">
+      <button id="export-btn" class="action-btn export-btn">Export CSV</button>
+      <label class="action-btn import-btn" tabindex="0">
+        Import CSV
+        <input type="file" id="import-file" accept=".csv" hidden>
+      </label>
+    </div>
+    <div id="import-status" class="save-status"></div>
+  </main>
+
+  <script src="https://unpkg.com/dexie@4/dist/dexie.min.js"></script>
+  <script src="js/joints.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js');
+    }
+  </script>
+</body>
+</html>

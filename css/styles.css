@@ -1,0 +1,286 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  padding: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  background: #f7f7f7;
+  color: #333;
+  max-width: 600px;
+}
+
+header { text-align: center; margin-bottom: 12px; }
+header h1 { font-size: 1.5em; margin: 0 0 8px; }
+
+/* Date navigation */
+.date-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.date-nav button {
+  font-size: 1.2em;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.date-nav button:disabled { opacity: 0.3; cursor: default; }
+
+.date-nav span {
+  font-size: 1.05em;
+  font-weight: 600;
+  min-width: 200px;
+  text-align: center;
+}
+
+/* Legend */
+.legend {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 0.82em;
+  color: #555;
+}
+
+.legend-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.legend-label { font-weight: 700; }
+.swollen-label { color: #2563eb; }
+.painful-label { color: #dc2626; }
+.legend-sev { white-space: nowrap; }
+
+/* Joint groups */
+.joint-group { margin-bottom: 20px; }
+
+.joint-group h2 {
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+  margin: 0 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+}
+
+.joint-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Anatomical grid (hands/feet) */
+.anatomical-grid {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.grid-header {
+  font-size: 0.72em;
+  font-weight: 700;
+  text-align: center;
+  padding: 4px 2px;
+  color: #666;
+}
+
+.grid-corner { /* empty top-left cell */ }
+
+.grid-row-label {
+  font-size: 0.72em;
+  font-weight: 700;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.grid-empty {
+  /* empty placeholder cell */
+}
+
+/* Joint cards (used in both grid and wrap layouts) */
+.joint-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 2px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* In wrap layout, cards size themselves */
+.joint-grid .joint-card {
+  flex: 1 1 calc(33.33% - 4px);
+  max-width: calc(33.33% - 4px);
+  min-width: 90px;
+  padding: 6px 4px;
+}
+
+.joint-name {
+  font-size: 0.72em;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.joint-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.severity-btn {
+  flex: 1;
+  padding: 6px 2px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.72em;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.12s, border-color 0.12s;
+  min-height: 32px;
+}
+
+/* Swollen severity colors (blue) */
+.swollen-btn[data-level="-1"] { background: #f3f4f6; border-color: #9ca3af; color: #6b7280; }
+.swollen-btn[data-level="0"]  { background: #fff;    border-color: #d1d5db; color: #9ca3af; }
+.swollen-btn[data-level="1"]  { background: #dbeafe; border-color: #93c5fd; color: #1e40af; }
+.swollen-btn[data-level="2"]  { background: #93c5fd; border-color: #3b82f6; color: #1e3a8a; }
+.swollen-btn[data-level="3"]  { background: #3b82f6; border-color: #1d4ed8; color: #fff; }
+
+/* Painful severity colors (red) */
+.painful-btn[data-level="-1"] { background: #f3f4f6; border-color: #9ca3af; color: #6b7280; }
+.painful-btn[data-level="0"]  { background: #fff;    border-color: #d1d5db; color: #9ca3af; }
+.painful-btn[data-level="1"]  { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+.painful-btn[data-level="2"]  { background: #fca5a5; border-color: #ef4444; color: #7f1d1d; }
+.painful-btn[data-level="3"]  { background: #ef4444; border-color: #dc2626; color: #fff; }
+
+/* Paired grid (large joints — 2 columns, body order) */
+.paired-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+/* Wide joint card (large joints — label + S left, P right) */
+.joint-card-wide {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.joint-card-wide .joint-name {
+  font-size: 0.78em;
+  font-weight: 600;
+  white-space: nowrap;
+  min-width: 70px;
+}
+
+.joint-card-wide .joint-controls-wide {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.joint-card-wide .severity-btn {
+  flex: 1;
+}
+
+/* Text sections */
+.text-section { margin-bottom: 16px; }
+
+.text-section h2 {
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+  margin: 0 0 6px;
+}
+
+.text-section textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+}
+
+#medications { min-height: 60px; }
+#notes { min-height: 80px; }
+
+/* Save */
+.save-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1em;
+  font-weight: 600;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.save-btn:active { background: #2563eb; }
+
+/* Export/Import */
+.export-import-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 0.95em;
+  font-weight: 600;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.action-btn:active { background: #f3f4f6; }
+
+.save-status {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.9em;
+  color: #16a34a;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s;
+  padding-bottom: 24px;
+}
+
+.save-status.visible { opacity: 1; }
