@@ -7,6 +7,7 @@ var ASSETS = [
   './js/db.js',
   './js/app.js',
   './manifest.json',
+  './favicon.ico',
   './favicon-16x16.png',
   './favicon-32x32.png',
   './apple-touch-icon.png',
